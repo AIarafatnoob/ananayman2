@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anan Aiman Tuba | Senior Software QA Engineer</title>
+    <link rel="icon" type="image/png" href="/favicon.png?v=3" />
+    <link rel="shortcut icon" href="/favicon.png?v=3" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#a78bfa", // Soft Lilac
+                        secondary: "#99f6e4", // Mint
+                        "background-light": "#fdfdfd",
+                        "background-dark": "#0a0a0a",
+                    },
+                    fontFamily: {
+                        display: ["Plus Jakarta Sans", "sans-serif"],
+                        serif: ["Playfair Display", "serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "1rem",
+                        'pill': "9999px",
+                    },
+                    animation: {
+                        'marquee': 'marquee 20s linear infinite',
+                        'spin-slow': 'spin 20s linear infinite',
+                        'bounce-slow': 'bounce 3s infinite',
+                        'float-subtle': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                },
+            },
+        };
+    </script>
+    <style>
+        .grainy-bg {
+            position: relative;
+        }
+
+        .grainy-bg::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            opacity: 0.03;
+            background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuAmxxSvHoxV-bzN6lCBvxBJubzQqAT8zpaopLPYYFR1gAT-Jprb5QU0mRj0CWni5gi_l1md6cZqKiWCCf9vQSh7JxOj_IZQAUFa59a1rSDoViuYz4u6yOM5UKjCt-F4OqaW1PomtpRopNHqcMD47aPwNB0EJlbaueh6RguotUgEjIoDV5yftzKYyzmYcX1ga0sBjNTRuAeE6ylY8r-qqrh28z81kymOuNQDYMCLfncq9-fFtyWeig9w-QLDUm630wCQlMJO47g1kR4);
+            pointer-events: none;
+        }
+
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        .dark .glass-nav {
+            background: rgba(10, 10, 10, 0.7);
+        }
+
+        .pastel-gradient {
+            background: radial-gradient(circle at 10% 20%, rgba(167, 139, 250, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(153, 246, 228, 0.08) 0%, transparent 40%);
+        }
+
+        .watermark {
+            font-size: 25vw;
+            line-height: 1;
+            opacity: 0.03;
+            pointer-events: none;
+            user-select: none;
+            z-index: 0;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 768px) {
+            .animate-marquee {
+                animation-duration: 12s !important;
+            }
+        }
+    </style>
+    <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/"
+  }
+}
+</script>
+    <link rel="stylesheet" href="/index.css">
+</head>
+
+<body
+    class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 grainy-bg transition-colors duration-300">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+</body>
+
+</html>
