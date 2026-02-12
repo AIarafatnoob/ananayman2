@@ -154,6 +154,81 @@ const InteractiveRibbon: React.FC<{ nameRef: React.RefObject<HTMLHeadingElement>
   );
 };
 
+interface DraggableBadgeProps {
+  children: React.ReactNode;
+  initialClassName: string;
+  animationDuration: string;
+}
+
+const DraggableBadge: React.FC<DraggableBadgeProps> = ({ children, initialClassName, animationDuration }) => {
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [dragging, setDragging] = useState(false);
+  const offsetRef = useRef({ x: 0, y: 0 });
+
+  const handleMouseDown = (e: React.MouseEvent | React.TouchEvent) => {
+    setDragging(true);
+    const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
+    const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
+    offsetRef.current = {
+      x: clientX - position.x,
+      y: clientY - position.y
+    };
+  };
+
+  useEffect(() => {
+    const handleMove = (e: MouseEvent | TouchEvent) => {
+      if (!dragging) return;
+      const clientX = 'touches' in e ? e.touches[0].clientX : (e as MouseEvent).clientX;
+      const clientY = 'touches' in e ? e.touches[0].clientY : (e as MouseEvent).clientY;
+      setPosition({
+        x: clientX - offsetRef.current.x,
+        y: clientY - offsetRef.current.y
+      });
+    };
+
+    const handleUp = () => {
+      setDragging(false);
+    };
+
+    if (dragging) {
+      window.addEventListener('mousemove', handleMove);
+      window.addEventListener('mouseup', handleUp);
+      window.addEventListener('touchmove', handleMove);
+      window.addEventListener('touchend', handleUp);
+    }
+
+    return () => {
+      window.removeEventListener('mousemove', handleMove);
+      window.removeEventListener('mouseup', handleUp);
+      window.removeEventListener('touchmove', handleMove);
+      window.removeEventListener('touchend', handleUp);
+    };
+  }, [dragging]);
+
+  return (
+    <div
+      className={initialClassName}
+      style={{
+        transform: `translate(${position.x}px, ${position.y}px)`,
+        zIndex: dragging ? 50 : 10,
+        pointerEvents: 'auto'
+      }}
+    >
+      <div
+        className={`cursor-grab active:cursor-grabbing select-none ${dragging ? '' : 'animate-float-subtle'}`}
+        style={{
+          animationDuration,
+          transition: dragging ? 'none' : 'transform 0.1s ease-out'
+        }}
+        onMouseDown={handleMouseDown}
+        onTouchStart={handleMouseDown}
+      >
+        {children}
+      </div>
+    </div>
+  );
+};
+
 export const Hero: React.FC = () => {
   const nameRef = useRef<HTMLHeadingElement>(null);
   const [clickCount, setClickCount] = useState(0);
@@ -230,38 +305,53 @@ export const Hero: React.FC = () => {
             {/* Status Badges - Desktop Only */}
             <div className="hidden lg:contents">
               {/* Left Side Badges */}
-              <div className="absolute -left-28 xl:-left-36 top-12 bg-white dark:bg-slate-900 p-3 xl:p-4 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-800 animate-float-subtle max-w-[140px]" style={{ animationDuration: '6s' }}>
+              <DraggableBadge
+                initialClassName="absolute -left-28 xl:-left-36 top-12 bg-white dark:bg-slate-900 p-3 xl:p-4 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-800 max-w-[140px]"
+                animationDuration="6s"
+              >
                 <div className="text-xl xl:text-2xl font-bold text-primary">3+ Years</div>
                 <div className="text-[9px] xl:text-[10px] uppercase tracking-widest text-slate-500 font-bold">QA Experience</div>
-              </div>
+              </DraggableBadge>
 
-              <div className="absolute -left-24 xl:-left-32 bottom-20 bg-white dark:bg-slate-900 p-3 xl:p-4 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-800 animate-float-subtle max-w-[140px]" style={{ animationDuration: '9s' }}>
+              <DraggableBadge
+                initialClassName="absolute -left-24 xl:-left-32 bottom-20 bg-white dark:bg-slate-900 p-3 xl:p-4 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-800 max-w-[140px]"
+                animationDuration="9s"
+              >
                 <div className="text-2xl xl:text-3xl font-bold text-primary">70%</div>
                 <div className="text-[9px] xl:text-[10px] uppercase tracking-widest text-slate-500 font-bold">Automation Coverage</div>
-              </div>
+              </DraggableBadge>
 
               {/* Right Side Badges */}
-              <div className="absolute -right-24 xl:-right-32 top-16 bg-white dark:bg-slate-900 p-3 xl:p-4 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-800 animate-float-subtle max-w-[140px]" style={{ animationDuration: '7s' }}>
+              <DraggableBadge
+                initialClassName="absolute -right-24 xl:-right-32 top-16 bg-white dark:bg-slate-900 p-3 xl:p-4 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-800 max-w-[140px]"
+                animationDuration="7s"
+              >
                 <div className="text-xl xl:text-2xl font-bold text-secondary">99.1%</div>
                 <div className="text-[9px] xl:text-[10px] uppercase tracking-widest text-slate-500 font-bold">Defect-Free rate</div>
-              </div>
+              </DraggableBadge>
 
-              <div className="absolute -right-20 xl:-right-24 top-1/2 -translate-y-1/2 bg-white dark:bg-slate-900 p-3 xl:p-4 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-800 animate-float-subtle max-w-[165px]" style={{ animationDuration: '8s' }}>
+              <DraggableBadge
+                initialClassName="absolute -right-20 xl:-right-24 top-1/2 -translate-y-1/2 bg-white dark:bg-slate-900 p-3 xl:p-4 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-800 max-w-[165px]"
+                animationDuration="8s"
+              >
                 <div className="flex items-center gap-2 mb-1">
                   <span className="material-symbols-outlined text-amber-500 text-sm">verified</span>
                   <span className="text-[9px] xl:text-[10px] uppercase tracking-widest text-slate-500 font-black">ISTQB Foundation</span>
                 </div>
                 <div className="text-[9px] xl:text-[10px] uppercase tracking-widest text-amber-500 font-bold italic">Global Certification</div>
-              </div>
+              </DraggableBadge>
 
-              <div className="absolute -right-16 xl:-right-20 bottom-24 bg-white dark:bg-slate-900 p-3 xl:p-4 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-800 animate-float-subtle max-w-[125px]" style={{ animationDuration: '10s' }}>
+              <DraggableBadge
+                initialClassName="absolute -right-16 xl:-right-20 bottom-24 bg-white dark:bg-slate-900 p-3 xl:p-4 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-800 max-w-[125px]"
+                animationDuration="10s"
+              >
                 <div className="flex gap-1 mb-1">
                   <span className="w-2 h-2 rounded-full bg-secondary"></span>
                   <span className="w-2 h-2 rounded-full bg-secondary"></span>
                   <span className="w-2 h-2 rounded-full bg-secondary"></span>
                 </div>
                 <div className="text-[9px] xl:text-[10px] uppercase tracking-widest text-slate-500 font-bold">CI/CD Expert</div>
-              </div>
+              </DraggableBadge>
             </div>
           </div>
 
