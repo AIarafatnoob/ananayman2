@@ -302,57 +302,57 @@ export const Hero: React.FC = () => {
             </div>
 
 
-            {/* Status Badges - Desktop Only */}
-            <div className="hidden lg:contents">
+            {/* Status Badges - Persistent & Draggable */}
+            <>
               {/* Left Side Badges */}
               <DraggableBadge
-                initialClassName="absolute -left-28 xl:-left-36 top-12 bg-white dark:bg-slate-900 p-3 xl:p-4 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-800 max-w-[140px]"
+                initialClassName="absolute -left-2 top-8 lg:-left-28 xl:-left-36 lg:top-12 bg-white dark:bg-slate-900 p-2 lg:p-3 xl:p-4 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-800 max-w-[100px] lg:max-w-[140px]"
                 animationDuration="6s"
               >
-                <div className="text-xl xl:text-2xl font-bold text-primary">3+ Years</div>
-                <div className="text-[9px] xl:text-[10px] uppercase tracking-widest text-slate-500 font-bold">QA Experience</div>
+                <div className="text-sm lg:text-xl xl:text-2xl font-bold text-primary">3+ Years</div>
+                <div className="text-[7px] lg:text-[9px] xl:text-[10px] uppercase tracking-widest text-slate-500 font-bold">QA Experience</div>
               </DraggableBadge>
 
               <DraggableBadge
-                initialClassName="absolute -left-24 xl:-left-32 bottom-20 bg-white dark:bg-slate-900 p-3 xl:p-4 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-800 max-w-[140px]"
+                initialClassName="absolute -left-4 bottom-16 lg:-left-24 xl:-left-32 lg:bottom-20 bg-white dark:bg-slate-900 p-2 lg:p-3 xl:p-4 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-800 max-w-[100px] lg:max-w-[140px]"
                 animationDuration="9s"
               >
-                <div className="text-2xl xl:text-3xl font-bold text-primary">70%</div>
-                <div className="text-[9px] xl:text-[10px] uppercase tracking-widest text-slate-500 font-bold">Automation Coverage</div>
+                <div className="text-base lg:text-2xl xl:text-3xl font-bold text-primary">70%</div>
+                <div className="text-[7px] lg:text-[9px] xl:text-[10px] uppercase tracking-widest text-slate-500 font-bold">Automation Coverage</div>
               </DraggableBadge>
 
               {/* Right Side Badges */}
               <DraggableBadge
-                initialClassName="absolute -right-24 xl:-right-32 top-16 bg-white dark:bg-slate-900 p-3 xl:p-4 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-800 max-w-[140px]"
+                initialClassName="absolute -right-2 top-12 lg:-right-24 xl:-right-32 lg:top-16 bg-white dark:bg-slate-900 p-2 lg:p-3 xl:p-4 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-800 max-w-[100px] lg:max-w-[140px]"
                 animationDuration="7s"
               >
-                <div className="text-xl xl:text-2xl font-bold text-secondary">99.1%</div>
-                <div className="text-[9px] xl:text-[10px] uppercase tracking-widest text-slate-500 font-bold">Defect-Free rate</div>
+                <div className="text-sm lg:text-xl xl:text-2xl font-bold text-secondary">99.1%</div>
+                <div className="text-[7px] lg:text-[9px] xl:text-[10px] uppercase tracking-widest text-slate-500 font-bold">Defect-Free rate</div>
               </DraggableBadge>
 
               <DraggableBadge
-                initialClassName="absolute -right-20 xl:-right-24 top-1/2 -translate-y-1/2 bg-white dark:bg-slate-900 p-3 xl:p-4 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-800 max-w-[165px]"
+                initialClassName="absolute -right-4 top-1/2 -translate-y-1/2 lg:-right-20 xl:-right-24 bg-white dark:bg-slate-900 p-2 lg:p-3 xl:p-4 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-800 max-w-[120px] lg:max-w-[165px]"
                 animationDuration="8s"
               >
-                <div className="flex items-center gap-2 mb-1">
-                  <span className="material-symbols-outlined text-amber-500 text-sm">verified</span>
-                  <span className="text-[9px] xl:text-[10px] uppercase tracking-widest text-slate-500 font-black">ISTQB Foundation</span>
+                <div className="flex items-center gap-1 lg:gap-2 mb-0.5 lg:mb-1">
+                  <span className="material-symbols-outlined text-amber-500 text-[10px] lg:text-sm">verified</span>
+                  <span className="text-[7px] lg:text-[9px] xl:text-[10px] uppercase tracking-widest text-slate-500 font-black">ISTQB Foundation</span>
                 </div>
-                <div className="text-[9px] xl:text-[10px] uppercase tracking-widest text-amber-500 font-bold italic">Global Certification</div>
+                <div className="text-[7px] lg:text-[9px] xl:text-[10px] uppercase tracking-widest text-amber-500 font-bold italic">Global Certification</div>
               </DraggableBadge>
 
               <DraggableBadge
-                initialClassName="absolute -right-16 xl:-right-20 bottom-24 bg-white dark:bg-slate-900 p-3 xl:p-4 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-800 max-w-[125px]"
+                initialClassName="absolute -right-2 bottom-20 lg:-right-16 xl:-right-20 lg:bottom-24 bg-white dark:bg-slate-900 p-2 lg:p-3 xl:p-4 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-800 max-w-[90px] lg:max-w-[125px]"
                 animationDuration="10s"
               >
-                <div className="flex gap-1 mb-1">
-                  <span className="w-2 h-2 rounded-full bg-secondary"></span>
-                  <span className="w-2 h-2 rounded-full bg-secondary"></span>
-                  <span className="w-2 h-2 rounded-full bg-secondary"></span>
+                <div className="flex gap-1 mb-0.5 lg:mb-1">
+                  <span className="w-1 h-1 lg:w-2 lg:h-2 rounded-full bg-secondary"></span>
+                  <span className="w-1 h-1 lg:w-2 lg:h-2 rounded-full bg-secondary"></span>
+                  <span className="w-1 h-1 lg:w-2 lg:h-2 rounded-full bg-secondary"></span>
                 </div>
-                <div className="text-[9px] xl:text-[10px] uppercase tracking-widest text-slate-500 font-bold">CI/CD Expert</div>
+                <div className="text-[7px] lg:text-[9px] xl:text-[10px] uppercase tracking-widest text-slate-500 font-bold">CI/CD Expert</div>
               </DraggableBadge>
-            </div>
+            </>
           </div>
 
           {/* Text Content */}
